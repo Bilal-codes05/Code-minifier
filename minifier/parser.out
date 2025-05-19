@@ -1,0 +1,1026 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> simple_statement
+Rule 5     statement -> compound_statement
+Rule 6     simple_statement -> assignment_statement
+Rule 7     simple_statement -> expression_statement
+Rule 8     assignment_statement -> IDENTIFIER ASSIGN expression
+Rule 9     expression_statement -> expression
+Rule 10    expression -> expression PLUS term
+Rule 11    expression -> expression MINUS term
+Rule 12    expression -> PRINT LPAREN expression RPAREN
+Rule 13    expression -> term
+Rule 14    term -> term TIMES factor
+Rule 15    term -> term DIVIDE factor
+Rule 16    term -> factor
+Rule 17    factor -> NUMBER
+Rule 18    factor -> STRING
+Rule 19    factor -> IDENTIFIER
+Rule 20    factor -> LPAREN expression RPAREN
+Rule 21    compound_statement -> if_statement
+Rule 22    compound_statement -> function_definition
+Rule 23    if_statement -> IF expression COLON statement_list
+Rule 24    function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+
+Terminals, with rules where they appear
+
+ASSIGN               : 8
+COLON                : 23 24
+DEF                  : 24
+DIVIDE               : 15
+IDENTIFIER           : 8 19 24
+IF                   : 23
+LPAREN               : 12 20 24
+MINUS                : 11
+NUMBER               : 17
+PLUS                 : 10
+PRINT                : 12
+RPAREN               : 12 20 24
+STRING               : 18
+TIMES                : 14
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment_statement : 6
+compound_statement   : 5
+expression           : 8 9 10 11 12 20 23
+expression_statement : 7
+factor               : 14 15 16
+function_definition  : 22
+if_statement         : 21
+program              : 0
+simple_statement     : 4
+statement            : 2 3
+statement_list       : 1 2 23 24
+term                 : 10 11 13 14 15
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . simple_statement
+    (5) statement -> . compound_statement
+    (6) simple_statement -> . assignment_statement
+    (7) simple_statement -> . expression_statement
+    (21) compound_statement -> . if_statement
+    (22) compound_statement -> . function_definition
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (9) expression_statement -> . expression
+    (23) if_statement -> . IF expression COLON statement_list
+    (24) function_definition -> . DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    IDENTIFIER      shift and go to state 10
+    IF              shift and go to state 12
+    DEF             shift and go to state 13
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    LPAREN          shift and go to state 14
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    simple_statement               shift and go to state 4
+    compound_statement             shift and go to state 5
+    assignment_statement           shift and go to state 6
+    expression_statement           shift and go to state 7
+    if_statement                   shift and go to state 8
+    function_definition            shift and go to state 9
+    expression                     shift and go to state 11
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . simple_statement
+    (5) statement -> . compound_statement
+    (6) simple_statement -> . assignment_statement
+    (7) simple_statement -> . expression_statement
+    (21) compound_statement -> . if_statement
+    (22) compound_statement -> . function_definition
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (9) expression_statement -> . expression
+    (23) if_statement -> . IF expression COLON statement_list
+    (24) function_definition -> . DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    IDENTIFIER      shift and go to state 10
+    IF              shift and go to state 12
+    DEF             shift and go to state 13
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    LPAREN          shift and go to state 14
+
+    statement                      shift and go to state 20
+    simple_statement               shift and go to state 4
+    compound_statement             shift and go to state 5
+    assignment_statement           shift and go to state 6
+    expression_statement           shift and go to state 7
+    if_statement                   shift and go to state 8
+    function_definition            shift and go to state 9
+    expression                     shift and go to state 11
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 3
+
+    (3) statement_list -> statement .
+
+    IDENTIFIER      reduce using rule 3 (statement_list -> statement .)
+    IF              reduce using rule 3 (statement_list -> statement .)
+    DEF             reduce using rule 3 (statement_list -> statement .)
+    PRINT           reduce using rule 3 (statement_list -> statement .)
+    NUMBER          reduce using rule 3 (statement_list -> statement .)
+    STRING          reduce using rule 3 (statement_list -> statement .)
+    LPAREN          reduce using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> simple_statement .
+
+    IDENTIFIER      reduce using rule 4 (statement -> simple_statement .)
+    IF              reduce using rule 4 (statement -> simple_statement .)
+    DEF             reduce using rule 4 (statement -> simple_statement .)
+    PRINT           reduce using rule 4 (statement -> simple_statement .)
+    NUMBER          reduce using rule 4 (statement -> simple_statement .)
+    STRING          reduce using rule 4 (statement -> simple_statement .)
+    LPAREN          reduce using rule 4 (statement -> simple_statement .)
+    $end            reduce using rule 4 (statement -> simple_statement .)
+
+
+state 5
+
+    (5) statement -> compound_statement .
+
+    IDENTIFIER      reduce using rule 5 (statement -> compound_statement .)
+    IF              reduce using rule 5 (statement -> compound_statement .)
+    DEF             reduce using rule 5 (statement -> compound_statement .)
+    PRINT           reduce using rule 5 (statement -> compound_statement .)
+    NUMBER          reduce using rule 5 (statement -> compound_statement .)
+    STRING          reduce using rule 5 (statement -> compound_statement .)
+    LPAREN          reduce using rule 5 (statement -> compound_statement .)
+    $end            reduce using rule 5 (statement -> compound_statement .)
+
+
+state 6
+
+    (6) simple_statement -> assignment_statement .
+
+    IDENTIFIER      reduce using rule 6 (simple_statement -> assignment_statement .)
+    IF              reduce using rule 6 (simple_statement -> assignment_statement .)
+    DEF             reduce using rule 6 (simple_statement -> assignment_statement .)
+    PRINT           reduce using rule 6 (simple_statement -> assignment_statement .)
+    NUMBER          reduce using rule 6 (simple_statement -> assignment_statement .)
+    STRING          reduce using rule 6 (simple_statement -> assignment_statement .)
+    LPAREN          reduce using rule 6 (simple_statement -> assignment_statement .)
+    $end            reduce using rule 6 (simple_statement -> assignment_statement .)
+
+
+state 7
+
+    (7) simple_statement -> expression_statement .
+
+    IDENTIFIER      reduce using rule 7 (simple_statement -> expression_statement .)
+    IF              reduce using rule 7 (simple_statement -> expression_statement .)
+    DEF             reduce using rule 7 (simple_statement -> expression_statement .)
+    PRINT           reduce using rule 7 (simple_statement -> expression_statement .)
+    NUMBER          reduce using rule 7 (simple_statement -> expression_statement .)
+    STRING          reduce using rule 7 (simple_statement -> expression_statement .)
+    LPAREN          reduce using rule 7 (simple_statement -> expression_statement .)
+    $end            reduce using rule 7 (simple_statement -> expression_statement .)
+
+
+state 8
+
+    (21) compound_statement -> if_statement .
+
+    IDENTIFIER      reduce using rule 21 (compound_statement -> if_statement .)
+    IF              reduce using rule 21 (compound_statement -> if_statement .)
+    DEF             reduce using rule 21 (compound_statement -> if_statement .)
+    PRINT           reduce using rule 21 (compound_statement -> if_statement .)
+    NUMBER          reduce using rule 21 (compound_statement -> if_statement .)
+    STRING          reduce using rule 21 (compound_statement -> if_statement .)
+    LPAREN          reduce using rule 21 (compound_statement -> if_statement .)
+    $end            reduce using rule 21 (compound_statement -> if_statement .)
+
+
+state 9
+
+    (22) compound_statement -> function_definition .
+
+    IDENTIFIER      reduce using rule 22 (compound_statement -> function_definition .)
+    IF              reduce using rule 22 (compound_statement -> function_definition .)
+    DEF             reduce using rule 22 (compound_statement -> function_definition .)
+    PRINT           reduce using rule 22 (compound_statement -> function_definition .)
+    NUMBER          reduce using rule 22 (compound_statement -> function_definition .)
+    STRING          reduce using rule 22 (compound_statement -> function_definition .)
+    LPAREN          reduce using rule 22 (compound_statement -> function_definition .)
+    $end            reduce using rule 22 (compound_statement -> function_definition .)
+
+
+state 10
+
+    (8) assignment_statement -> IDENTIFIER . ASSIGN expression
+    (19) factor -> IDENTIFIER .
+
+    ASSIGN          shift and go to state 21
+    TIMES           reduce using rule 19 (factor -> IDENTIFIER .)
+    DIVIDE          reduce using rule 19 (factor -> IDENTIFIER .)
+    PLUS            reduce using rule 19 (factor -> IDENTIFIER .)
+    MINUS           reduce using rule 19 (factor -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 19 (factor -> IDENTIFIER .)
+    IF              reduce using rule 19 (factor -> IDENTIFIER .)
+    DEF             reduce using rule 19 (factor -> IDENTIFIER .)
+    PRINT           reduce using rule 19 (factor -> IDENTIFIER .)
+    NUMBER          reduce using rule 19 (factor -> IDENTIFIER .)
+    STRING          reduce using rule 19 (factor -> IDENTIFIER .)
+    LPAREN          reduce using rule 19 (factor -> IDENTIFIER .)
+    $end            reduce using rule 19 (factor -> IDENTIFIER .)
+
+
+state 11
+
+    (9) expression_statement -> expression .
+    (10) expression -> expression . PLUS term
+    (11) expression -> expression . MINUS term
+
+    IDENTIFIER      reduce using rule 9 (expression_statement -> expression .)
+    IF              reduce using rule 9 (expression_statement -> expression .)
+    DEF             reduce using rule 9 (expression_statement -> expression .)
+    PRINT           reduce using rule 9 (expression_statement -> expression .)
+    NUMBER          reduce using rule 9 (expression_statement -> expression .)
+    STRING          reduce using rule 9 (expression_statement -> expression .)
+    LPAREN          reduce using rule 9 (expression_statement -> expression .)
+    $end            reduce using rule 9 (expression_statement -> expression .)
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 12
+
+    (23) if_statement -> IF . expression COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 24
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 13
+
+    (24) function_definition -> DEF . IDENTIFIER LPAREN RPAREN COLON statement_list
+
+    IDENTIFIER      shift and go to state 26
+
+
+state 14
+
+    (20) factor -> LPAREN . expression RPAREN
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 27
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 15
+
+    (13) expression -> term .
+    (14) term -> term . TIMES factor
+    (15) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 13 (expression -> term .)
+    MINUS           reduce using rule 13 (expression -> term .)
+    IDENTIFIER      reduce using rule 13 (expression -> term .)
+    IF              reduce using rule 13 (expression -> term .)
+    DEF             reduce using rule 13 (expression -> term .)
+    PRINT           reduce using rule 13 (expression -> term .)
+    NUMBER          reduce using rule 13 (expression -> term .)
+    STRING          reduce using rule 13 (expression -> term .)
+    LPAREN          reduce using rule 13 (expression -> term .)
+    $end            reduce using rule 13 (expression -> term .)
+    COLON           reduce using rule 13 (expression -> term .)
+    RPAREN          reduce using rule 13 (expression -> term .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+
+
+state 16
+
+    (12) expression -> PRINT . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 30
+
+
+state 17
+
+    (16) term -> factor .
+
+    TIMES           reduce using rule 16 (term -> factor .)
+    DIVIDE          reduce using rule 16 (term -> factor .)
+    PLUS            reduce using rule 16 (term -> factor .)
+    MINUS           reduce using rule 16 (term -> factor .)
+    IDENTIFIER      reduce using rule 16 (term -> factor .)
+    IF              reduce using rule 16 (term -> factor .)
+    DEF             reduce using rule 16 (term -> factor .)
+    PRINT           reduce using rule 16 (term -> factor .)
+    NUMBER          reduce using rule 16 (term -> factor .)
+    STRING          reduce using rule 16 (term -> factor .)
+    LPAREN          reduce using rule 16 (term -> factor .)
+    $end            reduce using rule 16 (term -> factor .)
+    COLON           reduce using rule 16 (term -> factor .)
+    RPAREN          reduce using rule 16 (term -> factor .)
+
+
+state 18
+
+    (17) factor -> NUMBER .
+
+    TIMES           reduce using rule 17 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 17 (factor -> NUMBER .)
+    PLUS            reduce using rule 17 (factor -> NUMBER .)
+    MINUS           reduce using rule 17 (factor -> NUMBER .)
+    IDENTIFIER      reduce using rule 17 (factor -> NUMBER .)
+    IF              reduce using rule 17 (factor -> NUMBER .)
+    DEF             reduce using rule 17 (factor -> NUMBER .)
+    PRINT           reduce using rule 17 (factor -> NUMBER .)
+    NUMBER          reduce using rule 17 (factor -> NUMBER .)
+    STRING          reduce using rule 17 (factor -> NUMBER .)
+    LPAREN          reduce using rule 17 (factor -> NUMBER .)
+    $end            reduce using rule 17 (factor -> NUMBER .)
+    COLON           reduce using rule 17 (factor -> NUMBER .)
+    RPAREN          reduce using rule 17 (factor -> NUMBER .)
+
+
+state 19
+
+    (18) factor -> STRING .
+
+    TIMES           reduce using rule 18 (factor -> STRING .)
+    DIVIDE          reduce using rule 18 (factor -> STRING .)
+    PLUS            reduce using rule 18 (factor -> STRING .)
+    MINUS           reduce using rule 18 (factor -> STRING .)
+    IDENTIFIER      reduce using rule 18 (factor -> STRING .)
+    IF              reduce using rule 18 (factor -> STRING .)
+    DEF             reduce using rule 18 (factor -> STRING .)
+    PRINT           reduce using rule 18 (factor -> STRING .)
+    NUMBER          reduce using rule 18 (factor -> STRING .)
+    STRING          reduce using rule 18 (factor -> STRING .)
+    LPAREN          reduce using rule 18 (factor -> STRING .)
+    $end            reduce using rule 18 (factor -> STRING .)
+    COLON           reduce using rule 18 (factor -> STRING .)
+    RPAREN          reduce using rule 18 (factor -> STRING .)
+
+
+state 20
+
+    (2) statement_list -> statement_list statement .
+
+    IDENTIFIER      reduce using rule 2 (statement_list -> statement_list statement .)
+    IF              reduce using rule 2 (statement_list -> statement_list statement .)
+    DEF             reduce using rule 2 (statement_list -> statement_list statement .)
+    PRINT           reduce using rule 2 (statement_list -> statement_list statement .)
+    NUMBER          reduce using rule 2 (statement_list -> statement_list statement .)
+    STRING          reduce using rule 2 (statement_list -> statement_list statement .)
+    LPAREN          reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 21
+
+    (8) assignment_statement -> IDENTIFIER ASSIGN . expression
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 31
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 22
+
+    (10) expression -> expression PLUS . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    term                           shift and go to state 32
+    factor                         shift and go to state 17
+
+state 23
+
+    (11) expression -> expression MINUS . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    term                           shift and go to state 33
+    factor                         shift and go to state 17
+
+state 24
+
+    (23) if_statement -> IF expression . COLON statement_list
+    (10) expression -> expression . PLUS term
+    (11) expression -> expression . MINUS term
+
+    COLON           shift and go to state 34
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 25
+
+    (19) factor -> IDENTIFIER .
+
+    TIMES           reduce using rule 19 (factor -> IDENTIFIER .)
+    DIVIDE          reduce using rule 19 (factor -> IDENTIFIER .)
+    COLON           reduce using rule 19 (factor -> IDENTIFIER .)
+    PLUS            reduce using rule 19 (factor -> IDENTIFIER .)
+    MINUS           reduce using rule 19 (factor -> IDENTIFIER .)
+    RPAREN          reduce using rule 19 (factor -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 19 (factor -> IDENTIFIER .)
+    IF              reduce using rule 19 (factor -> IDENTIFIER .)
+    DEF             reduce using rule 19 (factor -> IDENTIFIER .)
+    PRINT           reduce using rule 19 (factor -> IDENTIFIER .)
+    NUMBER          reduce using rule 19 (factor -> IDENTIFIER .)
+    STRING          reduce using rule 19 (factor -> IDENTIFIER .)
+    LPAREN          reduce using rule 19 (factor -> IDENTIFIER .)
+    $end            reduce using rule 19 (factor -> IDENTIFIER .)
+
+
+state 26
+
+    (24) function_definition -> DEF IDENTIFIER . LPAREN RPAREN COLON statement_list
+
+    LPAREN          shift and go to state 35
+
+
+state 27
+
+    (20) factor -> LPAREN expression . RPAREN
+    (10) expression -> expression . PLUS term
+    (11) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 36
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 28
+
+    (14) term -> term TIMES . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    factor                         shift and go to state 37
+
+state 29
+
+    (15) term -> term DIVIDE . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    factor                         shift and go to state 38
+
+state 30
+
+    (12) expression -> PRINT LPAREN . expression RPAREN
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    IDENTIFIER      shift and go to state 25
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 39
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 31
+
+    (8) assignment_statement -> IDENTIFIER ASSIGN expression .
+    (10) expression -> expression . PLUS term
+    (11) expression -> expression . MINUS term
+
+    IDENTIFIER      reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    IF              reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    DEF             reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    PRINT           reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    NUMBER          reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    STRING          reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    LPAREN          reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    $end            reduce using rule 8 (assignment_statement -> IDENTIFIER ASSIGN expression .)
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 32
+
+    (10) expression -> expression PLUS term .
+    (14) term -> term . TIMES factor
+    (15) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 10 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 10 (expression -> expression PLUS term .)
+    IDENTIFIER      reduce using rule 10 (expression -> expression PLUS term .)
+    IF              reduce using rule 10 (expression -> expression PLUS term .)
+    DEF             reduce using rule 10 (expression -> expression PLUS term .)
+    PRINT           reduce using rule 10 (expression -> expression PLUS term .)
+    NUMBER          reduce using rule 10 (expression -> expression PLUS term .)
+    STRING          reduce using rule 10 (expression -> expression PLUS term .)
+    LPAREN          reduce using rule 10 (expression -> expression PLUS term .)
+    $end            reduce using rule 10 (expression -> expression PLUS term .)
+    COLON           reduce using rule 10 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 10 (expression -> expression PLUS term .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+
+
+state 33
+
+    (11) expression -> expression MINUS term .
+    (14) term -> term . TIMES factor
+    (15) term -> term . DIVIDE factor
+
+    PLUS            reduce using rule 11 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 11 (expression -> expression MINUS term .)
+    IDENTIFIER      reduce using rule 11 (expression -> expression MINUS term .)
+    IF              reduce using rule 11 (expression -> expression MINUS term .)
+    DEF             reduce using rule 11 (expression -> expression MINUS term .)
+    PRINT           reduce using rule 11 (expression -> expression MINUS term .)
+    NUMBER          reduce using rule 11 (expression -> expression MINUS term .)
+    STRING          reduce using rule 11 (expression -> expression MINUS term .)
+    LPAREN          reduce using rule 11 (expression -> expression MINUS term .)
+    $end            reduce using rule 11 (expression -> expression MINUS term .)
+    COLON           reduce using rule 11 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 11 (expression -> expression MINUS term .)
+    TIMES           shift and go to state 28
+    DIVIDE          shift and go to state 29
+
+
+state 34
+
+    (23) if_statement -> IF expression COLON . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . simple_statement
+    (5) statement -> . compound_statement
+    (6) simple_statement -> . assignment_statement
+    (7) simple_statement -> . expression_statement
+    (21) compound_statement -> . if_statement
+    (22) compound_statement -> . function_definition
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (9) expression_statement -> . expression
+    (23) if_statement -> . IF expression COLON statement_list
+    (24) function_definition -> . DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    IDENTIFIER      shift and go to state 10
+    IF              shift and go to state 12
+    DEF             shift and go to state 13
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 11
+    statement_list                 shift and go to state 40
+    statement                      shift and go to state 3
+    simple_statement               shift and go to state 4
+    compound_statement             shift and go to state 5
+    assignment_statement           shift and go to state 6
+    expression_statement           shift and go to state 7
+    if_statement                   shift and go to state 8
+    function_definition            shift and go to state 9
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 35
+
+    (24) function_definition -> DEF IDENTIFIER LPAREN . RPAREN COLON statement_list
+
+    RPAREN          shift and go to state 41
+
+
+state 36
+
+    (20) factor -> LPAREN expression RPAREN .
+
+    TIMES           reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    IDENTIFIER      reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    IF              reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    DEF             reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    PRINT           reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    NUMBER          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    STRING          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    COLON           reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+
+
+state 37
+
+    (14) term -> term TIMES factor .
+
+    TIMES           reduce using rule 14 (term -> term TIMES factor .)
+    DIVIDE          reduce using rule 14 (term -> term TIMES factor .)
+    PLUS            reduce using rule 14 (term -> term TIMES factor .)
+    MINUS           reduce using rule 14 (term -> term TIMES factor .)
+    IDENTIFIER      reduce using rule 14 (term -> term TIMES factor .)
+    IF              reduce using rule 14 (term -> term TIMES factor .)
+    DEF             reduce using rule 14 (term -> term TIMES factor .)
+    PRINT           reduce using rule 14 (term -> term TIMES factor .)
+    NUMBER          reduce using rule 14 (term -> term TIMES factor .)
+    STRING          reduce using rule 14 (term -> term TIMES factor .)
+    LPAREN          reduce using rule 14 (term -> term TIMES factor .)
+    $end            reduce using rule 14 (term -> term TIMES factor .)
+    COLON           reduce using rule 14 (term -> term TIMES factor .)
+    RPAREN          reduce using rule 14 (term -> term TIMES factor .)
+
+
+state 38
+
+    (15) term -> term DIVIDE factor .
+
+    TIMES           reduce using rule 15 (term -> term DIVIDE factor .)
+    DIVIDE          reduce using rule 15 (term -> term DIVIDE factor .)
+    PLUS            reduce using rule 15 (term -> term DIVIDE factor .)
+    MINUS           reduce using rule 15 (term -> term DIVIDE factor .)
+    IDENTIFIER      reduce using rule 15 (term -> term DIVIDE factor .)
+    IF              reduce using rule 15 (term -> term DIVIDE factor .)
+    DEF             reduce using rule 15 (term -> term DIVIDE factor .)
+    PRINT           reduce using rule 15 (term -> term DIVIDE factor .)
+    NUMBER          reduce using rule 15 (term -> term DIVIDE factor .)
+    STRING          reduce using rule 15 (term -> term DIVIDE factor .)
+    LPAREN          reduce using rule 15 (term -> term DIVIDE factor .)
+    $end            reduce using rule 15 (term -> term DIVIDE factor .)
+    COLON           reduce using rule 15 (term -> term DIVIDE factor .)
+    RPAREN          reduce using rule 15 (term -> term DIVIDE factor .)
+
+
+state 39
+
+    (12) expression -> PRINT LPAREN expression . RPAREN
+    (10) expression -> expression . PLUS term
+    (11) expression -> expression . MINUS term
+
+    RPAREN          shift and go to state 42
+    PLUS            shift and go to state 22
+    MINUS           shift and go to state 23
+
+
+state 40
+
+    (23) if_statement -> IF expression COLON statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . simple_statement
+    (5) statement -> . compound_statement
+    (6) simple_statement -> . assignment_statement
+    (7) simple_statement -> . expression_statement
+    (21) compound_statement -> . if_statement
+    (22) compound_statement -> . function_definition
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (9) expression_statement -> . expression
+    (23) if_statement -> . IF expression COLON statement_list
+    (24) function_definition -> . DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for DEF resolved as shift
+  ! shift/reduce conflict for PRINT resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+    $end            reduce using rule 23 (if_statement -> IF expression COLON statement_list .)
+    IDENTIFIER      shift and go to state 10
+    IF              shift and go to state 12
+    DEF             shift and go to state 13
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    LPAREN          shift and go to state 14
+
+  ! IDENTIFIER      [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+  ! IF              [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+  ! DEF             [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+  ! PRINT           [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+  ! NUMBER          [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+  ! STRING          [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+  ! LPAREN          [ reduce using rule 23 (if_statement -> IF expression COLON statement_list .) ]
+
+    expression                     shift and go to state 11
+    statement                      shift and go to state 20
+    simple_statement               shift and go to state 4
+    compound_statement             shift and go to state 5
+    assignment_statement           shift and go to state 6
+    expression_statement           shift and go to state 7
+    if_statement                   shift and go to state 8
+    function_definition            shift and go to state 9
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 41
+
+    (24) function_definition -> DEF IDENTIFIER LPAREN RPAREN . COLON statement_list
+
+    COLON           shift and go to state 43
+
+
+state 42
+
+    (12) expression -> PRINT LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    MINUS           reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    IDENTIFIER      reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    IF              reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    DEF             reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    PRINT           reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    NUMBER          reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    STRING          reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    $end            reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    COLON           reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 12 (expression -> PRINT LPAREN expression RPAREN .)
+
+
+state 43
+
+    (24) function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . simple_statement
+    (5) statement -> . compound_statement
+    (6) simple_statement -> . assignment_statement
+    (7) simple_statement -> . expression_statement
+    (21) compound_statement -> . if_statement
+    (22) compound_statement -> . function_definition
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (9) expression_statement -> . expression
+    (23) if_statement -> . IF expression COLON statement_list
+    (24) function_definition -> . DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+    IDENTIFIER      shift and go to state 10
+    IF              shift and go to state 12
+    DEF             shift and go to state 13
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    LPAREN          shift and go to state 14
+
+    statement_list                 shift and go to state 44
+    statement                      shift and go to state 3
+    simple_statement               shift and go to state 4
+    compound_statement             shift and go to state 5
+    assignment_statement           shift and go to state 6
+    expression_statement           shift and go to state 7
+    if_statement                   shift and go to state 8
+    function_definition            shift and go to state 9
+    expression                     shift and go to state 11
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+
+state 44
+
+    (24) function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . simple_statement
+    (5) statement -> . compound_statement
+    (6) simple_statement -> . assignment_statement
+    (7) simple_statement -> . expression_statement
+    (21) compound_statement -> . if_statement
+    (22) compound_statement -> . function_definition
+    (8) assignment_statement -> . IDENTIFIER ASSIGN expression
+    (9) expression_statement -> . expression
+    (23) if_statement -> . IF expression COLON statement_list
+    (24) function_definition -> . DEF IDENTIFIER LPAREN RPAREN COLON statement_list
+    (10) expression -> . expression PLUS term
+    (11) expression -> . expression MINUS term
+    (12) expression -> . PRINT LPAREN expression RPAREN
+    (13) expression -> . term
+    (14) term -> . term TIMES factor
+    (15) term -> . term DIVIDE factor
+    (16) term -> . factor
+    (17) factor -> . NUMBER
+    (18) factor -> . STRING
+    (19) factor -> . IDENTIFIER
+    (20) factor -> . LPAREN expression RPAREN
+
+  ! shift/reduce conflict for IDENTIFIER resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for DEF resolved as shift
+  ! shift/reduce conflict for PRINT resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for LPAREN resolved as shift
+    $end            reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .)
+    IDENTIFIER      shift and go to state 10
+    IF              shift and go to state 12
+    DEF             shift and go to state 13
+    PRINT           shift and go to state 16
+    NUMBER          shift and go to state 18
+    STRING          shift and go to state 19
+    LPAREN          shift and go to state 14
+
+  ! IDENTIFIER      [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+  ! IF              [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+  ! DEF             [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+  ! PRINT           [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+  ! NUMBER          [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+  ! STRING          [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+  ! LPAREN          [ reduce using rule 24 (function_definition -> DEF IDENTIFIER LPAREN RPAREN COLON statement_list .) ]
+
+    statement                      shift and go to state 20
+    simple_statement               shift and go to state 4
+    compound_statement             shift and go to state 5
+    assignment_statement           shift and go to state 6
+    expression_statement           shift and go to state 7
+    if_statement                   shift and go to state 8
+    function_definition            shift and go to state 9
+    expression                     shift and go to state 11
+    term                           shift and go to state 15
+    factor                         shift and go to state 17
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IDENTIFIER in state 40 resolved as shift
+WARNING: shift/reduce conflict for IF in state 40 resolved as shift
+WARNING: shift/reduce conflict for DEF in state 40 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 40 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 40 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 40 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 40 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 44 resolved as shift
+WARNING: shift/reduce conflict for IF in state 44 resolved as shift
+WARNING: shift/reduce conflict for DEF in state 44 resolved as shift
+WARNING: shift/reduce conflict for PRINT in state 44 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 44 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 44 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 44 resolved as shift
