@@ -1,8 +1,0 @@
-setup.py
-code_minifier.egg-info/PKG-INFO
-code_minifier.egg-info/SOURCES.txt
-code_minifier.egg-info/dependency_links.txt
-code_minifier.egg-info/entry_points.txt
-code_minifier.egg-info/requires.txt
-code_minifier.egg-info/top_level.txt
-tests/test_lexer.py
